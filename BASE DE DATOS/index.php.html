@@ -1,0 +1,131 @@
+
+<!-- saved from url=(0036)http://localhost/personas2/index.php -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="./index.php_files/bootstrap.min.css" rel="stylesheet">
+		<link href="./index.php_files/bootstrap-theme.css" rel="stylesheet">
+		<link href="./index.php_files/jquery.dataTables.min.css" rel="stylesheet">	
+		<script src="./index.php_files/jquery.dataTables.min.js.descarga"></script>
+		<script src="./index.php_files/jquery-3.1.1.min.js.descarga"></script>
+		<script src="./index.php_files/bootstrap.min.js.descarga"></script>	
+        
+		<script>
+		$(document).ready(function(){
+			$('#mitabla').DataTable({
+			"order": [[1, "asc"]],
+			"language":{
+				"lengthMenu": "Mostrar _MENU_ registros por pagina",
+				"info": "Mostrando pagina _PAGE_ de _PAGES_",
+				"infoEmpty": "No hay registros disponibles",
+				"infoFiltered": "(filtrada de _MAX_ registros)",
+				"loadingRecords": "Cargando...",
+				"processing":     "Procesando...",
+				"search": "Buscar:",
+				"zeroRecords":    "No se encontraron registros coincidentes",
+				"paginate": {
+					"next":       "Siguiente",
+					"previous":   "Anterior"
+				},					
+			}
+		});	
+	});	
+</script>
+
+	</head>
+	
+	<body>
+		
+		<div class="container">
+			<div class="row">
+				<h2 style="text-align:center">Datos de Personas</h2>
+			</div>
+			
+			<div class="row">
+				<a href="http://localhost/personas2/nuevo.php" class="btn btn-primary">Nuevo Registro</a>
+				
+				<form action="http://localhost/personas2/index.php" method="POST">
+					<b>Nombre: </b><input type="text" id="campo" name="campo">
+					<input type="submit" id="enviar" name="enviar" value="Buscar" class="btn btn-info">
+				</form>
+			</div>
+			
+			<br>
+			
+			<div class="row table-responsive">
+			 
+				<table class="table table-striped"> 
+				<!-- Modal
+				<table class="display" id="mitabla"> -->
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombre</th>
+							<th>Email</th>
+							<th>Telefono</th>
+							<th></th>
+							<th></th>
+						</tr>
+					</thead>
+					
+					<tbody>
+													<tr>
+								<td>1</td>
+								<td>donovan</td>
+								<td>aguliars@hotmail.com</td>
+								<td>9856783421</td>
+								<td><a href="http://localhost/personas2/modificar.php?id=1"><span class="glyphicon glyphicon-pencil"></span></a></td>
+								<td><a href="http://localhost/personas2/index.php#" data-href="eliminar.php?id=1" data-toggle="modal" data-target="#confirm-delete"><span class="glyphicon glyphicon-trash"></span></a></td>
+							</tr>
+													<tr>
+								<td>2</td>
+								<td>leonardo</td>
+								<td>aleonardo@gmail.com</td>
+								<td>9851234576</td>
+								<td><a href="http://localhost/personas2/modificar.php?id=2"><span class="glyphicon glyphicon-pencil"></span></a></td>
+								<td><a href="http://localhost/personas2/index.php#" data-href="eliminar.php?id=2" data-toggle="modal" data-target="#confirm-delete"><span class="glyphicon glyphicon-trash"></span></a></td>
+							</tr>
+													<tr>
+								<td>3</td>
+								<td>xd</td>
+								<td>xd@gmail.com</td>
+								<td>123</td>
+								<td><a href="http://localhost/personas2/modificar.php?id=3"><span class="glyphicon glyphicon-pencil"></span></a></td>
+								<td><a href="http://localhost/personas2/index.php#" data-href="eliminar.php?id=3" data-toggle="modal" data-target="#confirm-delete"><span class="glyphicon glyphicon-trash"></span></a></td>
+							</tr>
+											</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+						<h4 class="modal-title" id="myModalLabel">Eliminar Registro</h4>
+					</div>
+					
+					<div class="modal-body">
+						¿Desea eliminar este registro?
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<a class="btn btn-danger btn-ok">Delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			$('#confirm-delete').on('show.bs.modal', function(e) {
+				$(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+				
+				$('.debug-url').html('Delete URL: <strong>' + $(this).find('.btn-ok').attr('href') + '</strong>');
+			});
+		</script>	
+		
+	
+</body></html>
