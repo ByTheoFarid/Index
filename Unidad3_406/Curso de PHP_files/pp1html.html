@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />	
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+
+<body>
+	<center>
+ <p>Esta página contiene el primer script</p>
+</center>
+
+<textarea cols='80' rows='32'>
+   /**
+ * Dos métodos para invertir arreglos en JavaScript:
+ * algoritmo que intercambia valores dentro del arreglo y otro
+ * que usa una función nativa de los arreglos en JavaScript
+ * 
+ * @author parzibyte
+ * Visita: parzibyte.me/blog
+ */
+const invertirManual = arreglo => {
+  // Guardar de una vez la longitud para hacer más legible el código
+  let longitudDelArreglo = arreglo.length;
+  // Recorrer arreglo hasta la mitad. Si es impar, se va al entero anterior más 
+  // próximo. P. ej. 5 / 2 => 2
+  for (let x = 0; x < longitudDelArreglo / 2; x++) {
+    // Respaldar el valor actual
+    let temporal = arreglo[x];
+    // Calcular el índice contrario, es decir, el del otro lado de la mitad; el cual irá descendiendo
+    let indiceContrario = longitudDelArreglo - x - 1;
+    // En el actual ahora está el del otro lado
+    arreglo[x] = arreglo[indiceContrario];
+    // Y en el otro lado, el que estaba originalmente en el actual
+    arreglo[indiceContrario] = temporal;
+  }
+
+  // No regresamos nada porque ya modificamos al arreglo internamente
+};
+
+const lenguajes = ["PHP", "C", "C#", "Rust", "Java", "JavaScript", "C++", "Go"];
+// Imprimir arreglo original
+console.log("Original: ", lenguajes);
+// Invertir con método manual
+invertirManual(lenguajes);
+console.log("Invertido manualmente: ", lenguajes);
+
+// Invertir con método existente
+lenguajes.reverse();
+console.log("Invertido con reverse: ", lenguajes);
+
+</textarea>
+</body>
+</html>
+
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />	
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+
+<body>
+	<center>
+ <p>Esta página contiene el primer script de php</p>
+</center>
+
+<textarea cols='80' rows='32'>
+<HTML>
+<HEAD>
+<TITLE>Menu.html</TITLE>
+</HEAD>
+<BODY text=white bgColor=navy>
+<div align="center">
+<h1>Menu Principal</H1>
+<br>
+<FORM METHOD="post" ACTION="insertar.php">
+<P>
+Usuario<br>
+<INPUT NAME="usuario" style="WIDTH: 70px; HEIGHT: 22px" size=9><br></P>
+<P>
+Password<br>
+<INPUT NAME="password" style="WIDTH: 73px; HEIGHT: 22px" size=9><br></P>
+<P>
+
+<INPUT TYPE="submit" value="Aceptar"> 
+</P></FORM></DIV>
+</BODY>
+</HTML>
+
+<?php
+//Conexion con la base
+//mysql_connect("localhost","tu_user","tu_password");
+  phpinfo();
+$link = mysql_connect("localhost", "root");
+
+mysql_select_db("curso",$link);
+
+
+//echo '<FORM METHOD="POST" ACTION="actualizar2.php">Clave<br>';
+
+//Creamos la sentencia SQL y la ejecutamos
+$sSQL="Select usuarios From usuario Order By usuario";
+//$result=mysql_db_query("ejemplo",$sSQL);
+$result = mysql_query($sSQL);
+
+echo '<select name="usuario">';
+
+//Generamos el menu desplegable
+while ($row=mysql_fetch_array($result))
+{echo '<option>'.$row["usuario"];}
+?>
+
+</textarea>
+</body>
+</html>
+
+
